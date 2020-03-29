@@ -7,11 +7,11 @@ namespace Table
         public Position Position { get; set; }
         public Color Color { get; protected set; }
         public int QtdMovement { get; protected set; }
-        public Table Table { get; protected set; }
+        public TableClass Table { get; protected set; }
 
-        public Piece(Position position, Color color, Table table)
+        public Piece(TableClass table, Color color)
         {
-            Position = position;
+            Position = null;
             Color = color;
             Table = table;
             QtdMovement = 0;
