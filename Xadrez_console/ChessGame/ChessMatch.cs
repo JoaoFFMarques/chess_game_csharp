@@ -30,7 +30,7 @@ namespace ChessGame
 
         private void PiecePlacement()
         {
-            Tab.PlacePiece(new Tower(Tab, Color.Black), new PositionChess('c', 1).ToPosition());
+            Tab.PlacePiece(new King(Tab, Color.Black), new PositionChess('c', 1).ToPosition());
         }
     }
 }

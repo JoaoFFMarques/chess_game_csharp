@@ -20,6 +20,13 @@ namespace Xadrez_console
 
                     Console.Write("Origem: ");
                     Position origin = Screen.ReadPosChess().ToPosition();
+
+                    bool[,] possiblePosition = match.Tab.PieceMethod(origin).PossibleMovements();
+
+                    Console.Clear();
+                    Screen.PrintTable(match.Tab, possiblePosition);
+
+                    Console.WriteLine();
                     Console.Write("Destino: ");
                     Position destiny = Screen.ReadPosChess().ToPosition();
 
@@ -30,6 +37,10 @@ namespace Xadrez_console
 
             }
             catch(TableException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch(Exception e)
             {
                 Console.WriteLine(e.Message);
             }
