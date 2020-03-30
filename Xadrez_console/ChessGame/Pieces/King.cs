@@ -1,7 +1,7 @@
 ﻿using Table;
 using Table.Enums;
 
-namespace ChessGame
+namespace ChessGame.Pieces
 {
     class King : Piece
     {

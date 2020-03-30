@@ -17,6 +17,11 @@ namespace Table
             QtdMovement = 0;
         }
 
+        public void IncrementMoventQtd()
+        {
+            QtdMovement++;
+        }
+
 
 
     }

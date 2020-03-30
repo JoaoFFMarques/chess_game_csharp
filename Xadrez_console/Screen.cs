@@ -1,5 +1,7 @@
 ﻿using Table;
 using System;
+using Table.Enums;
+using ChessGame;
 
 namespace Xadrez_console
 {
@@ -7,9 +9,10 @@ namespace Xadrez_console
     {
         public static void PrintTable(TableClass table)
         {
-            for(int i= 0; i< table.Lines; i++)
+            for(int i = 0; i < table.Lines; i++)
             {
-                for(int j=0; j<table.Collums; j++)
+                Console.Write(8 - i + " ");
+                for(int j = 0; j < table.Collums; j++)
                 {
                     if(table.PieceMethod(i, j) == null)
                     {
@@ -17,10 +20,35 @@ namespace Xadrez_console
                     }
                     else
                     {
-                        Console.Write(table.PieceMethod(i, j) + " ");
+                        PrintPiece(table.PieceMethod(i, j));
+                        Console.Write(" ");
                     }
                 }
                 Console.WriteLine();
+            }
+            Console.WriteLine("  a b c d e f g h");
+        }
+
+        public static PositionChess ReadPosChess()
+        {
+            string s = Console.ReadLine();
+            char collum = s[0];
+            int line = int.Parse(s[1] + "");
+            return new PositionChess(collum, line);
+        }
+
+        public static void PrintPiece(Piece piece)
+        {
+            if(piece.Color == Color.White)
+            {
+                Console.Write(piece);
+            }
+            else
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(piece);
+                Console.ForegroundColor = aux;
             }
         }
     }

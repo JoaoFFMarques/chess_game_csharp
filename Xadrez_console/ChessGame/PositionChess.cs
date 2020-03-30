@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Table;
+﻿using Table;
 
 namespace ChessGame
 {
-    class PostionChess
+    class PositionChess
     {
         public char Collum { get; set; }
         public int Line { get; set; }
 
-        public PostionChess(char collum, int line)
+        public PositionChess(char collum, int line)
         {
             Collum = collum;
             Line = line;

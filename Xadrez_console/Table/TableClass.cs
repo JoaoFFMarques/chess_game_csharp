@@ -1,7 +1,6 @@
 ﻿
 using Table.Excepetion;
 
-
 namespace Table
 {
     class TableClass
@@ -43,6 +42,18 @@ namespace Table
             p.Position = pos;
         }
 
+        public Piece RemovePiece(Position pos)
+        {
+            if(PieceMethod(pos) == null)
+            {
+                return null;
+            }
+            Piece aux = PieceMethod(pos);
+            aux.Position = null;
+            Pieces[pos.Line, pos.Columm] = null;
+            return aux;
+        }
+
         public bool ValidPosition(Position pos)
         {
             if(pos.Line<0 || pos.Line>=Lines || pos.Columm<0 || pos.Columm >= Collums)
@@ -51,14 +62,13 @@ namespace Table
             }
             return true;
         }
+
         public void ValidedPosition(Position pos)
         {
             if(!ValidPosition(pos))
             {
                 throw new TableException("Posição Inválida");
             }
-        }
-
-        
+        }        
     }
 }

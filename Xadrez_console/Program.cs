@@ -1,7 +1,6 @@
 ﻿using System;
 using Table;
 using ChessGame;
-using Table.Enums;
 using Table.Excepetion;
 
 namespace Xadrez_console
@@ -12,19 +11,29 @@ namespace Xadrez_console
         {
             try
             {
-                TableClass table = new TableClass(8, 8);
+                ChessMatch match = new ChessMatch();
 
-                table.PlacePiece(new Tower(table, Color.Black), new Position(1, 9));
-                table.PlacePiece(new King(table, Color.Black), new Position(1, 3));
+                while(!match.Finished)
+                {
+                    Console.Clear();
+                    Screen.PrintTable(match.Tab);
+
+                    Console.Write("Origem: ");
+                    Position origin = Screen.ReadPosChess().ToPosition();
+                    Console.Write("Destino: ");
+                    Position destiny = Screen.ReadPosChess().ToPosition();
+
+                    match.MovementExecution(origin, destiny);
+
+                }
 
 
-                Screen.PrintTable(table);
             }
-            catch (TableException e)
+            catch(TableException e)
             {
                 Console.WriteLine(e.Message);
             }
-           
+
         }
     }
 }
