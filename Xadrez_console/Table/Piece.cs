@@ -22,12 +22,17 @@ namespace Table
             QtdMovement++;
         }
 
+        public void DecreaseMoventQtd()
+        {
+            QtdMovement--;
+        }
+
         public bool ExistsPossibleMovements()
         {
             bool[,] mat = PossibleMovements();
             for(int i = 0; i < Table.Lines; i++)
             {
-                for(int j = 0; j < Table.Collums; j++)
+                for(int j = 0; j < Table.Columns; j++)
                 {
                     if(mat[i, j])
                     {
@@ -41,7 +46,7 @@ namespace Table
 
         public bool CanMoveTo(Position pos)
         {
-            return PossibleMovements()[pos.Line, pos.Columm];
+            return PossibleMovements()[pos.Line, pos.Column];
         }
 
         public abstract bool[,] PossibleMovements();

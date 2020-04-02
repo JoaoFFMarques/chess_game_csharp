@@ -6,24 +6,24 @@ namespace Table
     class TableClass
     {
         public int Lines { get; set; }
-        public int Collums { get; set; }
+        public int Columns { get; set; }
         private Piece[,] Pieces;
 
-        public TableClass(int lines, int collums)
+        public TableClass(int lines, int columns)
         {
             Lines = lines;
-            Collums = collums;
-            Pieces = new Piece[lines, collums];
+            Columns = columns;
+            Pieces = new Piece[lines, columns];
         }
 
-        public Piece PieceMethod(int line, int collum)
+        public Piece PieceMethod(int line, int column)
         {
-            return Pieces[line, collum];
+            return Pieces[line, column];
         }
 
         public Piece PieceMethod(Position pos)
         {
-            return Pieces[pos.Line, pos.Columm];
+            return Pieces[pos.Line, pos.Column];
         }
 
         public bool PieceExist(Position pos)
@@ -38,7 +38,7 @@ namespace Table
             {
                 throw new TableException("Já existe uma peça nessa posição!");
             }
-            Pieces[pos.Line, pos.Columm] = p;
+            Pieces[pos.Line, pos.Column] = p;
             p.Position = pos;
         }
 
@@ -50,13 +50,13 @@ namespace Table
             }
             Piece aux = PieceMethod(pos);
             aux.Position = null;
-            Pieces[pos.Line, pos.Columm] = null;
+            Pieces[pos.Line, pos.Column] = null;
             return aux;
         }
 
         public bool ValidPosition(Position pos)
         {
-            if(pos.Line<0 || pos.Line>=Lines || pos.Columm<0 || pos.Columm >= Collums)
+            if(pos.Line<0 || pos.Line>=Lines || pos.Column<0 || pos.Column >= Columns)
             {
                 return false;
             }

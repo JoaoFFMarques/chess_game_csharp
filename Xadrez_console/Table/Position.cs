@@ -4,23 +4,23 @@ namespace Table
     class Position
     {
         public int Line { get; set; }
-        public int Columm { get; set; }
+        public int Column { get; set; }
 
-        public Position(int line, int columm)
+        public Position(int line, int column)
         {
             Line = line;
-            Columm = columm;
+            Column = column;
         }
 
-        public void DefineVallues(int line, int columm)
+        public void DefineVallues(int line, int column)
         {
             Line = line;
-            Columm = columm;
+            Column = column;
         }
 
         public override string ToString()
         {
-            return Line + ", " + Columm;
+            return Line + ", " + Column;
         }
     }
 }

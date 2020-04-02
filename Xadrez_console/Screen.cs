@@ -2,11 +2,46 @@
 using System;
 using Table.Enums;
 using ChessGame;
+using System.Collections.Generic;
 
 namespace Xadrez_console
 {
     class Screen
     {
+        public static void PrintMatch(ChessMatch match)
+        {
+            Screen.PrintTable(match.Tab);
+            Console.WriteLine();
+            PrintCapturedPieces(match);
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + match.Turn);
+            Console.WriteLine("Aguardando jogada: " + match.ActivePlayer);
+        }
+
+        public static void PrintCapturedPieces(ChessMatch match)
+        {
+            Console.WriteLine("Peças capturadas:");
+            Console.Write("Brancas: ");
+            PrintSet(match.CapturedPiecesSet(Color.Branca));
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Pretas: ");
+            PrintSet(match.CapturedPiecesSet(Color.Preta));
+            Console.ForegroundColor = aux;
+
+        }
+
+        public static void PrintSet(HashSet<Piece> set)
+        {
+            Console.Write("[");
+            foreach(Piece obj in set)
+            {
+                Console.Write(obj + " ");
+            }
+            Console.WriteLine("]");
+
+        }
+
         public static void PrintTable(TableClass table)
         {
             ConsoleColor originalBackground = Console.BackgroundColor;
@@ -14,10 +49,10 @@ namespace Xadrez_console
             for(int i = 0; i < table.Lines; i++)
             {
                 Console.Write(8 - i + "|");
-                for(int j = 0; j < table.Collums; j++)
+                for(int j = 0; j < table.Columns; j++)
                 {
-                    
-                    
+
+
                     PrintPiece(table.PieceMethod(i, j));
                 }
                 Console.WriteLine();
@@ -27,14 +62,15 @@ namespace Xadrez_console
 
         public static void PrintTable(TableClass table, bool[,] possiblePositions)
         {
+            Console.SetCursorPosition(0, 0);
             ConsoleColor originalBackground = Console.BackgroundColor;
             ConsoleColor alterBackGround = ConsoleColor.DarkGray;
-            
+
 
             for(int i = 0; i < table.Lines; i++)
             {
                 Console.Write(8 - i + "|");
-                for(int j = 0; j < table.Collums; j++)
+                for(int j = 0; j < table.Columns; j++)
                 {
                     if(possiblePositions[i, j])
                     {
@@ -44,7 +80,7 @@ namespace Xadrez_console
                     {
                         Console.BackgroundColor = originalBackground;
                     }
-                    
+
                     PrintPiece(table.PieceMethod(i, j));
                     Console.BackgroundColor = originalBackground;
                 }
@@ -57,9 +93,9 @@ namespace Xadrez_console
         public static PositionChess ReadPosChess()
         {
             string s = Console.ReadLine();
-            char collum = s[0];
+            char column = s[0];
             int line = int.Parse(s[1] + "");
-            return new PositionChess(collum, line);
+            return new PositionChess(column, line);
         }
 
         public static void PrintPiece(Piece piece)

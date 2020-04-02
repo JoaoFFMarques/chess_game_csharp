@@ -4,23 +4,23 @@ namespace ChessGame
 {
     class PositionChess
     {
-        public char Collum { get; set; }
+        public char Column { get; set; }
         public int Line { get; set; }
 
-        public PositionChess(char collum, int line)
+        public PositionChess(char column, int line)
         {
-            Collum = collum;
+            Column = column;
             Line = line;
         }
 
         public Position ToPosition()
         {
-            return new Position(8 - Line, Collum - 'a');
+            return new Position(8 - Line, Column - 'a');
         }
 
         public override string ToString()
         {
-            return "" + Collum + Line;
+            return "" + Column + Line;
         }
     }
 }

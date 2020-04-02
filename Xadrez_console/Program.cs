@@ -9,7 +9,6 @@ namespace Xadrez_console
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(90, 30);
             try
             {
                 ChessMatch match = new ChessMatch();
@@ -19,10 +18,7 @@ namespace Xadrez_console
                     try
                     {
                         Console.Clear();
-                        Screen.PrintTable(match.Tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + match.Turn);
-                        Console.WriteLine("Aguardando jogada: " + match.ActivePlayer);
+                        Screen.PrintMatch(match);
 
                         Console.Write("Origem: ");
                         Position origin = Screen.ReadPosChess().ToPosition();
@@ -30,10 +26,8 @@ namespace Xadrez_console
 
                         bool[,] possiblePosition = match.Tab.PieceMethod(origin).PossibleMovements();
 
-                        Console.Clear();
                         Screen.PrintTable(match.Tab, possiblePosition);
-
-                        Console.WriteLine();
+                        Console.SetCursorPosition(0, 17);
                         Console.Write("Destino: ");
                         Position destiny = Screen.ReadPosChess().ToPosition();
                         match.DestinyPositionValided(origin, destiny);
@@ -47,14 +41,14 @@ namespace Xadrez_console
                     }
 
                 }
-
-
+                Console.Clear();
+                Screen.PrintMatch(match);
             }
             catch(TableException e)
             {
                 Console.WriteLine(e.Message);
             }
-            
+            Console.ReadLine();
         }
     }
 }

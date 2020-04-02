@@ -17,14 +17,14 @@ namespace ChessGame.Pieces
 
         public override bool[,] PossibleMovements()
         {
-            bool[,] mat = new bool[Table.Lines, Table.Collums];
+            bool[,] mat = new bool[Table.Lines, Table.Columns];
             Position pos = new Position(0, 0);
 
             //acima
-            pos.DefineVallues(Position.Line - 1, Position.Columm);
+            pos.DefineVallues(Position.Line - 1, Position.Column);
             while(Table.ValidPosition(pos) && CanMove(pos))
             {
-                mat[pos.Line, pos.Columm] = true;
+                mat[pos.Line, pos.Column] = true;
                 if(Table.PieceMethod(pos) != null && Table.PieceMethod(pos).Color != Color)
                 {
                     break;
@@ -33,22 +33,22 @@ namespace ChessGame.Pieces
             }
 
             //direita
-            pos.DefineVallues(Position.Line, Position.Columm + 1);
+            pos.DefineVallues(Position.Line, Position.Column + 1);
             while(Table.ValidPosition(pos) && CanMove(pos))
             {
-                mat[pos.Line, pos.Columm] = true;
+                mat[pos.Line, pos.Column] = true;
                 if(Table.PieceMethod(pos) != null && Table.PieceMethod(pos).Color != Color)
                 {
                     break;
                 }
-                pos.Columm += 1;
+                pos.Column += 1;
             }
 
             //abaixo
-            pos.DefineVallues(Position.Line + 1, Position.Columm);
+            pos.DefineVallues(Position.Line + 1, Position.Column);
             while(Table.ValidPosition(pos) && CanMove(pos))
             {
-                mat[pos.Line, pos.Columm] = true;
+                mat[pos.Line, pos.Column] = true;
                 if(Table.PieceMethod(pos) != null && Table.PieceMethod(pos).Color != Color)
                 {
                     break;
@@ -57,15 +57,15 @@ namespace ChessGame.Pieces
             }
 
             // esquerda
-            pos.DefineVallues(Position.Line, Position.Columm - 1);
+            pos.DefineVallues(Position.Line, Position.Column - 1);
             while(Table.ValidPosition(pos) && CanMove(pos))
             {
-                mat[pos.Line, pos.Columm] = true;
+                mat[pos.Line, pos.Column] = true;
                 if(Table.PieceMethod(pos) != null && Table.PieceMethod(pos).Color != Color)
                 {
                     break;
                 }
-                pos.Columm -= 1;
+                pos.Column -= 1;
             }
 
             return mat;
