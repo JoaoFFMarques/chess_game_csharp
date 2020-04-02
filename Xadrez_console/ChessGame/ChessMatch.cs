@@ -363,6 +363,16 @@ namespace ChessGame
             PlaceNewPiece('f', 7, new Peon(Tab, Color.Preta, this));
             PlaceNewPiece('g', 7, new Peon(Tab, Color.Preta, this));
             PlaceNewPiece('h', 7, new Peon(Tab, Color.Preta, this));
+            //Cavalos
+            PlaceNewPiece('b', 1, new Horse(Tab, Color.Branca));
+            PlaceNewPiece('g', 1, new Horse(Tab, Color.Branca));
+            PlaceNewPiece('b', 8, new Horse(Tab, Color.Preta));
+            PlaceNewPiece('g', 8, new Horse(Tab, Color.Preta));
+            //Bispos
+            PlaceNewPiece('c', 1, new Bishop(Tab, Color.Branca));
+            PlaceNewPiece('f', 1, new Bishop(Tab, Color.Branca));
+            PlaceNewPiece('c', 8, new Bishop(Tab, Color.Preta));
+            PlaceNewPiece('f', 8, new Bishop(Tab, Color.Preta));
 
         }
     }

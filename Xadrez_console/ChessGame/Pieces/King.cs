@@ -17,7 +17,7 @@ namespace ChessGame.Pieces
             return p == null || p.Color != Color;
         }
 
-        private bool RockTesttoTower(Position pos)
+        private bool CastlingTesttoTower(Position pos)
         {
             Piece p = Table.PieceMethod(pos);
             return p != null && p is Tower && p.Color == Color && p.QtdMovement == 0;
@@ -85,7 +85,7 @@ namespace ChessGame.Pieces
             {
                 // #jogadaespecial roque pequeno
                 Position posT1 = new Position(Position.Line, Position.Column + 3);
-                if(RockTesttoTower(posT1))
+                if(CastlingTesttoTower(posT1))
                 {
                     Position p1 = new Position(Position.Line, Position.Column + 1);
                     Position p2 = new Position(Position.Line, Position.Column + 2);
@@ -96,7 +96,7 @@ namespace ChessGame.Pieces
                 }
                 // #jogadaespecial roque grande
                 Position posT2 = new Position(Position.Line, Position.Column - 4);
-                if(RockTesttoTower(posT2))
+                if(CastlingTesttoTower(posT2))
                 {
                     Position p1 = new Position(Position.Line, Position.Column - 1);
                     Position p2 = new Position(Position.Line, Position.Column - 2);
