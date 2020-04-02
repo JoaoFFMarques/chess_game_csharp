@@ -9,11 +9,15 @@ namespace Xadrez_console
     {
         public static void PrintTable(TableClass table)
         {
+            ConsoleColor originalBackground = Console.BackgroundColor;
+
             for(int i = 0; i < table.Lines; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.Write(8 - i + "|");
                 for(int j = 0; j < table.Collums; j++)
                 {
+                    
+                    
                     PrintPiece(table.PieceMethod(i, j));
                 }
                 Console.WriteLine();
@@ -25,11 +29,11 @@ namespace Xadrez_console
         {
             ConsoleColor originalBackground = Console.BackgroundColor;
             ConsoleColor alterBackGround = ConsoleColor.DarkGray;
-
+            
 
             for(int i = 0; i < table.Lines; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.Write(8 - i + "|");
                 for(int j = 0; j < table.Collums; j++)
                 {
                     if(possiblePositions[i, j])
@@ -40,6 +44,7 @@ namespace Xadrez_console
                     {
                         Console.BackgroundColor = originalBackground;
                     }
+                    
                     PrintPiece(table.PieceMethod(i, j));
                     Console.BackgroundColor = originalBackground;
                 }
@@ -61,11 +66,11 @@ namespace Xadrez_console
         {
             if(piece == null)
             {
-                Console.Write("- ");
+                Console.Write("_|");
             }
             else
             {
-                if(piece.Color == Color.White)
+                if(piece.Color == Color.Branca)
                 {
                     Console.Write(piece);
                 }
@@ -76,7 +81,7 @@ namespace Xadrez_console
                     Console.Write(piece);
                     Console.ForegroundColor = aux;
                 }
-                Console.Write(" ");
+                Console.Write("|");
             }
         }
     }
